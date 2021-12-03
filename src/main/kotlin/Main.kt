@@ -1,5 +1,7 @@
 import problems.ISolver
 import problems.day1.DayOne;
+import problems.day2.DayTwo
+import problems.day2.MoveReader
 import readers.IntReader
 
 fun solveDay(day: ISolver, dayNum: String){
@@ -31,4 +33,5 @@ fun main(args: Array<String>) {
     println("Program arguments: ${args.joinToString()}")
 
     solveDay(DayOne(IntReader()), "01");
+    solveDay(DayTwo(MoveReader()), "02")
 }
