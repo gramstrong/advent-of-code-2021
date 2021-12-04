@@ -1,23 +1,8 @@
 package problems.day2
 
+import data.Move
 import problems.ISolver
 import readers.IReader
-import java.io.File
-
-data class Move(val direction: String, val units: Int)
-
-class MoveReader: IReader<Move> {
-    override fun read(fileName: String): List<Move> {
-        var lines: List<String> = File(fileName).readLines()
-
-        var moves: List<Move> = lines.map { s ->
-            var moveParams: List<String> = s.split(" ")
-            Move(moveParams.get(0), moveParams.get(1).toInt())
-        }
-
-        return moves
-    }
-}
 
 class DayTwo(reader: IReader<Move>) : ISolver {
 
