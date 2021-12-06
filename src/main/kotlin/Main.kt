@@ -3,10 +3,8 @@ import problems.day1.DayOne;
 import problems.day2.DayTwo
 import problems.day3.DayThree
 import problems.day4.DayFour
-import readers.BingoReader
-import readers.BitsReader
-import readers.IntReader
-import readers.MoveReader
+import problems.day5.DayFive
+import readers.*
 
 fun solveDay(day: ISolver, dayNum: String){
     println("DAY ${dayNum}")
@@ -40,4 +38,5 @@ fun main(args: Array<String>) {
     solveDay(DayTwo(MoveReader()), "02")
     solveDay(DayThree(BitsReader()), "03")
     solveDay(DayFour(BingoReader()), "04")
+    solveDay(DayFive(VentsReader()), "05")
 }
