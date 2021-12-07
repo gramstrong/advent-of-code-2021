@@ -4,6 +4,7 @@ import problems.day2.DayTwo
 import problems.day3.DayThree
 import problems.day4.DayFour
 import problems.day5.DayFive
+import problems.day6.DaySix
 import readers.*
 
 fun solveDay(day: ISolver, dayNum: String){
@@ -39,4 +40,5 @@ fun main(args: Array<String>) {
     solveDay(DayThree(BitsReader()), "03")
     solveDay(DayFour(BingoReader()), "04")
     solveDay(DayFive(VentsReader()), "05")
+    solveDay(DaySix(LanternFishReader()), "06")
 }
