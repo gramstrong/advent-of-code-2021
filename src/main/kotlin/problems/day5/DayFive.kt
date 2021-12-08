@@ -1,6 +1,7 @@
 package problems.day5
 import data.Vent
 import data.Vents
+import printers.GridPrinter
 import problems.ISolver
 import readers.IReader
 import java.awt.Point
@@ -41,18 +42,6 @@ class DayFive(reader: IReader<Vents>) : ISolver {
         }
     }
 
-    private fun printSmall(points: MutableMap<Point, Int>){
-        for(y in 0..9) {
-            for (x in 0..9) {
-                if (points[Point(x, y)] != null) print("${points.get(Point(x, y))}|")
-                else print(".|")
-            }
-            print("\n")
-        }
-        print("\n")
-
-    }
-
     override fun solvePart1(file: String): String {
         val input = READER.read("src/main/kotlin/problems/day5/$file").iterator()
         if(!input.hasNext()) return ""
@@ -71,7 +60,7 @@ class DayFive(reader: IReader<Vents>) : ISolver {
 
         val size = points.filter{ p -> p.value > 1 }.size
 
-        //printSmall(points);
+        //GridPrinter.print(points);
 
         return "$size"
     }
@@ -99,7 +88,7 @@ class DayFive(reader: IReader<Vents>) : ISolver {
 
         val size = points.filter{ p -> p.value > 1 }.size
 
-        //printSmall(points);
+        //GridPrinter.print(points);
 
         return "$size"
     }
