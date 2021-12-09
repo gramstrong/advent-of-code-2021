@@ -6,6 +6,7 @@ import problems.day4.DayFour
 import problems.day5.DayFive
 import problems.day6.DaySix
 import problems.day7.DaySeven
+import problems.day8.DayEight
 
 import readers.*
 
@@ -44,4 +45,5 @@ fun main(args: Array<String>) {
     solveDay(DayFive(VentsReader()), "05")
     solveDay(DaySix(LanternFishReader()), "06")
     solveDay(DaySeven(CSVIntReader()), "07")
+    solveDay(DayEight(DigitalReader()), "08")
 }

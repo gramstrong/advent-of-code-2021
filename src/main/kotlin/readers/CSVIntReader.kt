@@ -1,6 +1,5 @@
 package readers
 
-import data.LanternFish
 import java.io.File
 
 class CSVIntReader: IReader<Int> {
