@@ -11,15 +11,15 @@ class Bits(bits: String) {
 
     fun get(i: Int): Int {
         return if (i in 0 until size)
-            bits[i];
-        else 0;
+            bits[i]
+        else 0
     }
 
     override fun equals(other: Any?): Boolean {
         if(other !is Bits) return false
-        if(getSize() != other.getSize()) return false;
+        if(getSize() != other.getSize()) return false
         for(i in 0 until size)
-            if(get(i) != other.get(i)) return false;
+            if(get(i) != other.get(i)) return false
 
         return super.equals(other)
     }

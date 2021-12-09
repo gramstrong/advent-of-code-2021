@@ -3,7 +3,7 @@ package data
 data class BingoRow(val values: MutableMap<Int, Boolean>){
     fun mark(value: Int): Boolean {
         if(values.containsKey(value))
-            values.put(value, true);
+            values[value] = true
 
         return !values.containsValue(false)
     }
@@ -23,12 +23,12 @@ data class BingoCard(val rows: List<BingoRow>, val cols: List<BingoRow>, val dia
         for(row in rows){
             bingo =
                 if(!bingo) row.mark(value)
-                else bingo
+                else true
         }
         for(col in cols){
             bingo =
                 if(!bingo) col.mark(value)
-                else bingo
+                else true
         }
         //Diagonals don't count apparently!
 //        for(diag in diags){
@@ -48,14 +48,4 @@ data class BingoCard(val rows: List<BingoRow>, val cols: List<BingoRow>, val dia
     }
 }
 
-data class BingoGame(val cards: List<BingoCard>, val draw: List<Int>){
-    fun mark(value: Int): Boolean {
-        var bingo = false
-        for(card in cards){
-            bingo =
-                if(!bingo) card.mark(value)
-                else bingo
-        }
-        return bingo
-    }
-}
+data class BingoGame(val cards: List<BingoCard>, val draw: List<Int>)

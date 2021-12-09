@@ -6,7 +6,7 @@ package data
 
 data class DigitalDisplaySequence(val digits: List<DigitalDisplay>, val sequence: List<DigitalDisplay>){
 
-    private val EMPTY_DISPLAY: DigitalDisplay = DigitalDisplay("")
+    private val emptyDisplay: DigitalDisplay = DigitalDisplay("")
 
     private fun getZero(): DigitalDisplay{
         val six = getSix()
@@ -14,13 +14,13 @@ data class DigitalDisplaySequence(val digits: List<DigitalDisplay>, val sequence
 
         for (digit in digits)
             if(digit.canZero() && digit != six && digit != nine) return digit
-        return EMPTY_DISPLAY;
+        return emptyDisplay
     }
 
     private fun getOne(): DigitalDisplay{
         for (digit in digits)
             if(digit.isOne()) return digit
-        return EMPTY_DISPLAY;
+        return emptyDisplay
     }
 
     private fun getTwo(): DigitalDisplay{
@@ -60,7 +60,7 @@ data class DigitalDisplaySequence(val digits: List<DigitalDisplay>, val sequence
     private fun getFour(): DigitalDisplay{
         for (digit in digits)
             if(digit.isFour()) return digit
-        return EMPTY_DISPLAY;
+        return emptyDisplay
     }
 
     private fun getFive(): DigitalDisplay{
@@ -80,12 +80,12 @@ data class DigitalDisplaySequence(val digits: List<DigitalDisplay>, val sequence
     private fun getSeven(): DigitalDisplay{
         for (digit in digits)
             if(digit.isSeven()) return digit
-        return EMPTY_DISPLAY;
+        return emptyDisplay
     }
     private fun getEight(): DigitalDisplay{
         for (digit in digits)
             if(digit.isEight()) return digit
-        return EMPTY_DISPLAY;
+        return emptyDisplay
     }
 
     private fun getNine(): DigitalDisplay{
@@ -98,14 +98,14 @@ data class DigitalDisplaySequence(val digits: List<DigitalDisplay>, val sequence
 
 
     fun getNumEasyDigits(): Int{
-        var count = 0;
+        var count = 0
         for(digit in sequence){
-            if(digit.equals(getOne())) count++
-            if(digit.equals(getFour())) count++
-            if(digit.equals(getSeven())) count++
-            if(digit.equals(getEight())) count++
+            if(digit == getOne()) count++
+            if(digit == getFour()) count++
+            if(digit == getSeven()) count++
+            if(digit == getEight()) count++
         }
-        return count;
+        return count
     }
 
     fun printSolved(){
@@ -123,7 +123,7 @@ data class DigitalDisplaySequence(val digits: List<DigitalDisplay>, val sequence
     }
 
     fun decode(): Int{
-        var decodeMap: Map<String, Int> = mapOf(
+        val decodeMap: Map<String, Int> = mapOf(
             getZero().part to 0,
             getOne().part to 1,
             getTwo().part to 2,
@@ -136,6 +136,6 @@ data class DigitalDisplaySequence(val digits: List<DigitalDisplay>, val sequence
             getNine().part to 9,
         )
 
-        return "${decodeMap.get(sequence[0].part)}${decodeMap.get(sequence[1].part)}${decodeMap.get(sequence[2].part)}${decodeMap.get(sequence[3].part)}".toInt()
+        return "${decodeMap[sequence[0].part]}${decodeMap[sequence[1].part]}${decodeMap[sequence[2].part]}${decodeMap[sequence[3].part]}".toInt()
     }
 }

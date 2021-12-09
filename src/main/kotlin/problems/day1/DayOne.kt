@@ -3,12 +3,10 @@ package problems.day1
 import problems.ISolver
 import readers.IReader
 
-class DayOne(reader: IReader<Int>) : ISolver {
-
-    val READER = reader;
+class DayOne(private val reader: IReader<Int>) : ISolver {
 
     override fun solvePart1(file: String): String {
-        val input: Iterator<Int> = READER.read("src/main/kotlin/problems/day1/$file").iterator()
+        val input: Iterator<Int> = reader.read("src/main/kotlin/problems/day1/$file").iterator()
         var prev: Int
         var curr: Int
         var increased = 0
@@ -29,7 +27,7 @@ class DayOne(reader: IReader<Int>) : ISolver {
     }
 
     override fun solvePart2(file: String): String {
-        val input: Array<Int> = READER.read("src/main/kotlin/problems/day1/$file").toTypedArray()
+        val input: Array<Int> = reader.read("src/main/kotlin/problems/day1/$file").toTypedArray()
         var prev: Int
         var curr = 0
         var increased = 0

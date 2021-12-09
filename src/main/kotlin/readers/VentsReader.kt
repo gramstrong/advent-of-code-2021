@@ -9,7 +9,7 @@ class VentsReader: IReader<Vents> {
     override fun read(fileName: String): List<Vents> {
         val lines = File(fileName).readLines().iterator()
         val reg = Regex("([0-9]+),([0-9]+) -> ([0-9]+),([0-9]+)")
-        var vents: MutableList<Vent> = ArrayList<Vent>()
+        val vents: MutableList<Vent> = ArrayList()
 
 
         for(line in lines){

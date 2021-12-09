@@ -1,14 +1,11 @@
 package problems.day5
 import data.Vent
 import data.Vents
-import printers.GridPrinter
 import problems.ISolver
 import readers.IReader
 import java.awt.Point
 
-class DayFive(reader: IReader<Vents>) : ISolver {
-
-    private val READER = reader
+class DayFive(private val reader: IReader<Vents>) : ISolver {
 
     private fun getRange(a1: Int, a2: Int): IntRange {
         return if(a2 > a1) a1 .. a2 else a2 .. a1
@@ -17,7 +14,7 @@ class DayFive(reader: IReader<Vents>) : ISolver {
     private fun updateLineX(points: MutableMap<Point, Int>, x1: Int, x2: Int, y: Int){
 
         for (i in getRange(x1, x2)) {
-            var count = points[Point(i, y)]
+            val count = points[Point(i, y)]
             points[Point(i, y)] = if(count != null) count + 1 else 1
         }
     }
@@ -25,7 +22,7 @@ class DayFive(reader: IReader<Vents>) : ISolver {
     private fun updateLineY(points: MutableMap<Point, Int>, y1: Int, y2: Int, x: Int){
 
         for (i in getRange(y1, y2)) {
-            var count = points[Point(x, i)]
+            val count = points[Point(x, i)]
             points[Point(x, i)] = if(count != null) count + 1 else 1
         }
     }
@@ -35,7 +32,7 @@ class DayFive(reader: IReader<Vents>) : ISolver {
         var curry = y
 
         for(i in 0 .. length){
-            var count = points[Point(currx, curry)]
+            val count = points[Point(currx, curry)]
             points[Point(currx, curry)] = if(count != null) count + 1 else 1
             currx += 1
             curry += m
@@ -43,11 +40,11 @@ class DayFive(reader: IReader<Vents>) : ISolver {
     }
 
     override fun solvePart1(file: String): String {
-        val input = READER.read("src/main/kotlin/problems/day5/$file").iterator()
+        val input = reader.read("src/main/kotlin/problems/day5/$file").iterator()
         if(!input.hasNext()) return ""
 
-        var points: MutableMap<Point, Int> = mutableMapOf<Point, Int>()
-        var vents: List<Vent> = input.next().getOrthogonal()
+        val points: MutableMap<Point, Int> = mutableMapOf()
+        val vents: List<Vent> = input.next().getOrthogonal()
 
         for (vent in vents){
             if(vent.x1 == vent.x2) {
@@ -66,11 +63,11 @@ class DayFive(reader: IReader<Vents>) : ISolver {
     }
 
     override fun solvePart2(file: String): String {
-        val input = READER.read("src/main/kotlin/problems/day5/$file").iterator()
+        val input = reader.read("src/main/kotlin/problems/day5/$file").iterator()
         if(!input.hasNext()) return ""
 
-        var points: MutableMap<Point, Int> = mutableMapOf<Point, Int>()
-        var vents: List<Vent> = input.next().ventList
+        val points: MutableMap<Point, Int> = mutableMapOf()
+        val vents: List<Vent> = input.next().ventList
 
         for (vent in vents){
             if(vent.x1 == vent.x2) {

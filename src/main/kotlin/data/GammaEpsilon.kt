@@ -7,8 +7,8 @@ data class GammaEpsilon(val gamma: Bits, val epsilon: Bits) {
 
         other as GammaEpsilon
 
-        if (!gamma.equals(other.gamma)) return false
-        if (!epsilon.equals(other.epsilon)) return false
+        if (gamma != other.gamma) return false
+        if (epsilon != other.epsilon) return false
 
         return true
     }

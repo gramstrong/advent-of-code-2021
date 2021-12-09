@@ -1,8 +1,6 @@
 package problems.day8
-import data.DigitalDisplay
 import data.DigitalDisplaySequence
 import problems.ISolver
-import readers.DigitalReader
 import readers.IReader
 
 class DayEight(reader: IReader<DigitalDisplaySequence>) : ISolver {

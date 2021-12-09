@@ -2,15 +2,12 @@ package problems.day6
 import data.LanternFish
 import problems.ISolver
 import readers.IReader
-import readers.LanternFishReader
 
-class DaySix(reader: IReader<LanternFish>) : ISolver {
-
-    private val READER = reader
+class DaySix(private val reader: IReader<LanternFish>) : ISolver {
 
     private fun spawn(fishes: MutableList<LanternFish>, days: Int): MutableList<LanternFish> {
         for(i in 1 .. days){
-            var babies: MutableList<LanternFish> = ArrayList<LanternFish>();
+            val babies: MutableList<LanternFish> = ArrayList()
             for(fish in fishes){
                 if(fish.live()){
                     babies.add(LanternFish(8))
@@ -23,9 +20,9 @@ class DaySix(reader: IReader<LanternFish>) : ISolver {
     }
 
     private fun spawnCount(fishes: MutableList<LanternFish>, days: Int): Long{
-        var counts: MutableList<Long> = mutableListOf(0,0,0,0,0,0,0,0,0)
+        val counts: MutableList<Long> = mutableListOf(0,0,0,0,0,0,0,0,0)
         for(fish in fishes)
-            counts.set(fish.timer, counts.get(fish.timer) + 1)
+            counts[fish.timer] = counts[fish.timer] + 1
 
         for(i in 0 until days){
             counts.add(counts.removeFirst())
@@ -35,15 +32,15 @@ class DaySix(reader: IReader<LanternFish>) : ISolver {
     }
 
     override fun solvePart1(file: String): String {
-        val input = READER.read("src/main/kotlin/problems/day6/$file")
-        var fishes: MutableList<LanternFish> = input.toMutableList()
+        val input = reader.read("src/main/kotlin/problems/day6/$file")
+        val fishes: MutableList<LanternFish> = input.toMutableList()
 
 
         return "${spawn(fishes, 80).size}"
     }
 
     override fun solvePart2(file: String): String {
-        val input = READER.read("src/main/kotlin/problems/day6/$file")
+        val input = reader.read("src/main/kotlin/problems/day6/$file")
 
         return "${spawnCount(input.toMutableList(), 256)}"
     }

@@ -4,55 +4,53 @@ import data.Move
 import problems.ISolver
 import readers.IReader
 
-class DayTwo(reader: IReader<Move>) : ISolver {
+class DayTwo(private val reader: IReader<Move>) : ISolver {
 
-    private val READER = reader
     private var x = 0
     private var y = 0
-    private var aim = 0;
+    private var aim = 0
 
-    fun reset(){
-        x = 0;
-        y = 0;
-        aim = 0;
+    private fun reset(){
+        x = 0
+        y = 0
+        aim = 0
     }
 
-    fun makeMove(move: Move) {
-        if(move.direction == "forward")
-            x += move.units
-        else if(move.direction == "down")
-            y += move.units
-        else if(move.direction == "up")
-            y -= move.units
-    }
-
-    fun makeAim(move: Move) {
-        if(move.direction == "forward"){
-            makeMove(move)
-            makeMove(Move("down", move.units * aim))
+    private fun makeMove(move: Move) {
+        when (move.direction) {
+            "forward" -> x += move.units
+            "down" -> y += move.units
+            "up" -> y -= move.units
         }
-        else if(move.direction == "down")
-            aim += move.units
-        else if(move.direction == "up")
-            aim -= move.units
+    }
+
+    private fun makeAim(move: Move) {
+        when (move.direction) {
+            "forward" -> {
+                makeMove(move)
+                makeMove(Move("down", move.units * aim))
+            }
+            "down" -> aim += move.units
+            "up" -> aim -= move.units
+        }
     }
 
     override fun solvePart1(file: String): String {
         reset()
-        val input: Iterator<Move> = READER.read("src/main/kotlin/problems/day2/$file").iterator()
+        val input: Iterator<Move> = reader.read("src/main/kotlin/problems/day2/$file").iterator()
 
         for(move: Move in input)
-            makeMove(move);
+            makeMove(move)
 
         return "${x*y}"
     }
 
     override fun solvePart2(file: String): String {
         reset()
-        val input: Iterator<Move> = READER.read("src/main/kotlin/problems/day2/$file").iterator()
+        val input: Iterator<Move> = reader.read("src/main/kotlin/problems/day2/$file").iterator()
 
         for(move: Move in input)
-            makeAim(move);
+            makeAim(move)
 
         return "${x*y}"
     }}

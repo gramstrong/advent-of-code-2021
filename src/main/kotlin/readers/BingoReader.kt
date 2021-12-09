@@ -7,8 +7,8 @@ import java.io.File
 
 class BingoReader: IReader<BingoGame> {
 
-    fun getBingoRow(values: List<Int>): BingoRow {
-        val rowValues: MutableMap<Int, Boolean> = mutableMapOf<Int, Boolean>()
+    private fun getBingoRow(values: List<Int>): BingoRow {
+        val rowValues: MutableMap<Int, Boolean> = mutableMapOf()
 
         for(value in values)
             rowValues[value] = false
@@ -18,11 +18,11 @@ class BingoReader: IReader<BingoGame> {
 
     override fun read(fileName: String): List<BingoGame> {
         val lines = File(fileName).readLines().iterator()
-        if(!lines.hasNext()) return listOf<BingoGame>()
+        if(!lines.hasNext()) return listOf()
 
         val draw: List<Int> = lines.next().split(",").map { s -> s.toInt() }
         val wsReg = "\\s+".toRegex()
-        var cards: MutableList<BingoCard> = ArrayList()
+        val cards: MutableList<BingoCard> = ArrayList()
 
 
 

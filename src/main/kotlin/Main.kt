@@ -1,5 +1,5 @@
 import problems.ISolver
-import problems.day1.DayOne;
+import problems.day1.DayOne
 import problems.day2.DayTwo
 import problems.day3.DayThree
 import problems.day4.DayFour
@@ -11,7 +11,7 @@ import problems.day8.DayEight
 import readers.*
 
 fun solveDay(day: ISolver, dayNum: String){
-    println("DAY ${dayNum}")
+    println("DAY $dayNum")
     println("========================================")
     println("Part 1")
     val dayOneSmall: String = day.solvePart1("small-input.txt")
@@ -38,7 +38,7 @@ fun main(args: Array<String>) {
     // Learn more about running applications: https://www.jetbrains.com/help/idea/running-applications.html.
     println("Program arguments: ${args.joinToString()}")
 
-    solveDay(DayOne(IntReader()), "01");
+    solveDay(DayOne(IntReader()), "01")
     solveDay(DayTwo(MoveReader()), "02")
     solveDay(DayThree(BitsReader()), "03")
     solveDay(DayFour(BingoReader()), "04")
