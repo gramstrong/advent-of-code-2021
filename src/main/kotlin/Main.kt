@@ -1,3 +1,4 @@
+import data.LavaTube
 import problems.ISolver
 import problems.day1.DayOne
 import problems.day2.DayTwo
@@ -7,6 +8,7 @@ import problems.day5.DayFive
 import problems.day6.DaySix
 import problems.day7.DaySeven
 import problems.day8.DayEight
+import problems.day9.DayNine
 
 import readers.*
 
@@ -46,4 +48,5 @@ fun main(args: Array<String>) {
     solveDay(DaySix(LanternFishReader()), "06")
     solveDay(DaySeven(CSVIntReader()), "07")
     solveDay(DayEight(DigitalReader()), "08")
+    solveDay(DayNine(LavaTubeReader()), "09")
 }
