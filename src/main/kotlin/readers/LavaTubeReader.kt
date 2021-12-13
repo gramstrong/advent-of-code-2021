@@ -5,8 +5,6 @@ import java.io.File
 
 class LavaTubeReader: IReader<LavaTube> {
 
-    private val def: LavaTube = LavaTube(-1,-1,-1,-1,-1)
-
     override fun read(fileName: String): List<LavaTube> {
         val tubes: MutableList<MutableList<LavaTube>> = ArrayList()
         var lines: MutableList<String> = ArrayList()

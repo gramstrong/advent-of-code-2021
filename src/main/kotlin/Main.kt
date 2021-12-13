@@ -9,6 +9,7 @@ import problems.day7.DaySeven
 import problems.day8.DayEight
 import problems.day9.DayNine
 import problems.day10.DayTen
+import problems.day11.DayEleven
 
 import readers.*
 
@@ -50,4 +51,5 @@ fun main(args: Array<String>) {
     solveDay(DayEight(DigitalReader()), "08")
     solveDay(DayNine(LavaTubeReader()), "09")
     solveDay(DayTen(StringReader()), "10")
+    solveDay(DayEleven(OctopusReader()), "11")
 }
