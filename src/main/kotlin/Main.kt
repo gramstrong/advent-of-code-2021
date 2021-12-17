@@ -1,4 +1,3 @@
-import data.Graph
 import problems.ISolver
 import problems.day1.DayOne
 import problems.day2.DayTwo
@@ -12,6 +11,7 @@ import problems.day9.DayNine
 import problems.day10.DayTen
 import problems.day11.DayEleven
 import problems.day12.DayTwelve
+import problems.day13.DayThirteen
 
 import readers.*
 
@@ -55,4 +55,5 @@ fun main(args: Array<String>) {
     solveDay(DayTen(StringReader()), "10")
     solveDay(DayEleven(OctopusReader()), "11")
     solveDay(DayTwelve(GraphReader()), "12")
+    solveDay(DayThirteen(CameraManualReader()), "13")
 }
